@@ -54,6 +54,7 @@ let searchedText = async userSearch => {
     // END OF FILTER METHOD
 }
 
+
 search1.addEventListener("keyup", () => searchedText(search1.value.toLowerCase()))
 search2.addEventListener("keyup", () => searchedText(search2.value.toLowerCase()))
 
@@ -64,12 +65,6 @@ let nameCollection = []
 //     nameCollection.push(`${fName} ${lName}`)
 // }
 searchedText()
-
-// const searches = document.querySelectorAll(".searches > input")
-// for (i = 0; i < searches.length; i++) {
-//     searches.addEventListener()
-// }
-
 
 
 let container1 = document.querySelector("#player1-container")
@@ -84,8 +79,6 @@ submission.addEventListener("click", () => {
         document.querySelector("#searchForm2 > input").value != ""
     ) {
         playerStats()
-
-        // player2Stats()
     }
 
 })
@@ -177,109 +170,136 @@ let playerStats = async () => {
     document.querySelector("#p2-8").innerHTML = minutes2
     document.querySelector("#p2-9").innerHTML = gamesPlayed2
 
-    let statsArr = [
-        points1, points2,
-        steals1, steals2,
-        minutes1, minutes2,
-        gamesPlayed1, gamesPlayed2,
-        ftPercent1, ftPercent2,
-        fgPercent1, fgPercent2,
-        rebound1, rebound2,
-        block1, block2,
-        assist1, assist2
+    // Initialize Player1 Column variables
+    let player1_column1 = document.querySelector("#p1-1")
+    let player1_column2 = document.querySelector("#p1-2")
+    let player1_column3 = document.querySelector("#p1-3")
+    let player1_column4 = document.querySelector("#p1-4")
+    let player1_column5 = document.querySelector("#p1-5")
+    let player1_column6 = document.querySelector("#p1-6")
+    let player1_column7 = document.querySelector("#p1-7")
+    let player1_column8 = document.querySelector("#p1-8")
+    let player1_column9 = document.querySelector("#p1-9")
+
+    // Initialize Player2 Column variables
+    let player2_column1 = document.querySelector("#p2-1")
+    let player2_column2 = document.querySelector("#p2-2")
+    let player2_column3 = document.querySelector("#p2-3")
+    let player2_column4 = document.querySelector("#p2-4")
+    let player2_column5 = document.querySelector("#p2-5")
+    let player2_column6 = document.querySelector("#p2-6")
+    let player2_column7 = document.querySelector("#p2-7")
+    let player2_column8 = document.querySelector("#p2-8")
+    let player2_column9 = document.querySelector("#p2-9")
+
+    // Add both players column variables to an array
+    let columnArray = [
+        player1_column1, player1_column2, player1_column3, player1_column4,
+        player1_column5, player1_column6, player1_column7, player1_column8, player1_column9,
+        player2_column1, player2_column2, player2_column3, player2_column4,
+        player2_column5, player2_column6, player2_column7, player2_column8, player2_column9
     ]
 
-
+    // Call function
+    resetHightlights()
+    // Create function to reset highlights (BOLD AND GREEN COLORING) from tables after resubmission
+    function resetHightlights() {
+        for (let i = 0; i < columnArray.length; i++) {
+            columnArray[i].style.color = "black"
+            columnArray[i].style.fontWeight = "normal"
+        }
+    }
 
     //  Make better stats bold and green
     if (points1 > points2) {
-        document.querySelector("#p1-1").style.color = "green"
-        document.querySelector("#p1-1").style.fontWeight = "bold"
+        player1_column1.style.color = "green"
+        player1_column1.style.fontWeight = "bold"
     }
     if (points2 > points1) {
-        document.querySelector("#p2-1").style.color = "green"
-        document.querySelector("#p2-1").style.fontWeight = "bold"
+        player2_column1.style.color = "green"
+        player2_column1.style.fontWeight = "bold"
     }
     if (assist1 > assist2) {
-        document.querySelector("#p1-2").style.color = "green"
-        document.querySelector("#p1-2").style.fontWeight = "bold"
+        player1_column2.style.color = "green"
+        player1_column2.style.fontWeight = "bold"
 
     }
     if (assist2 > assist1) {
-        document.querySelector("#p2-2").style.color = "green"
-        document.querySelector("#p2-2").style.fontWeight = "bold"
+        player2_column2.style.color = "green"
+        player2_column2.style.fontWeight = "bold"
 
     }
     if (block1 > block2) {
-        document.querySelector("#p1-3").style.color = "green"
-        document.querySelector("#p1-3").style.fontWeight = "bold"
+        player1_column3.style.color = "green"
+        player1_column3.style.fontWeight = "bold"
 
     }
     if (block2 > block1) {
-        document.querySelector("#p2-3").style.color = "green"
-        document.querySelector("#p2-3").style.fontWeight = "bold"
+        player2_column3.style.color = "green"
+        player2_column3.style.fontWeight = "bold"
 
     }
     if (rebound1 > rebound2) {
-        document.querySelector("#p1-4").style.color = "green"
-        document.querySelector("#p1-4").style.fontWeight = "bold"
+        player1_column4.style.color = "green"
+        player1_column4.style.fontWeight = "bold"
 
     }
     if (rebound2 > rebound1) {
-        document.querySelector("#p2-4").style.color = "green"
-        document.querySelector("#p2-4").style.fontWeight = "bold"
+        player2_column4.style.color = "green"
+        player2_column4.style.fontWeight = "bold"
 
     }
     if (steals1 > steals2) {
-        document.querySelector("#p1-5").style.color = "green"
-        document.querySelector("#p1-5").style.fontWeight = "bold"
+        player1_column5.style.color = "green"
+        player1_column5.style.fontWeight = "bold"
 
     }
     if (steals2 > steals1) {
-        document.querySelector("#p2-5").style.color = "green"
-        document.querySelector("#p2-5").style.fontWeight = "bold"
+        player2_column5.style.color = "green"
+        player2_column5.style.fontWeight = "bold"
 
     }
     if (fgPercent1 > fgPercent2) {
-        document.querySelector("#p1-6").style.color = "green"
-        document.querySelector("#p1-6").style.fontWeight = "bold"
+        player1_column6.style.color = "green"
+        player1_column6.style.fontWeight = "bold"
 
     }
     if (fgPercent2 > fgPercent1) {
-        document.querySelector("#p2-6").style.color = "green"
-        document.querySelector("#p2-6").style.fontWeight = "bold"
+        player2_column6.style.color = "green"
+        player2_column6.style.fontWeight = "bold"
 
     }
     if (ftPercent1 > ftPercent2) {
-        document.querySelector("#p1-7").style.color = "green"
-        document.querySelector("#p1-7").style.fontWeight = "bold"
+        player1_column7.style.color = "green"
+        player1_column7.style.fontWeight = "bold"
 
     }
     if (ftPercent2 > ftPercent1) {
-        document.querySelector("#p2-7").style.color = "green"
-        document.querySelector("#p2-7").style.fontWeight = "bold"
+        player2_column7.style.color = "green"
+        player2_column7.style.fontWeight = "bold"
 
     }
     if (minutes1 > minutes2) {
-        document.querySelector("#p1-8").style.color = "green"
-        document.querySelector("#p1-8").style.fontWeight = "bold"
+        player1_column8.style.color = "green"
+        player1_column8.style.fontWeight = "bold"
 
     }
     if (minutes2 > minutes1) {
-        document.querySelector("#p2-8").style.color = "green"
-        document.querySelector("#p2-8").style.fontWeight = "bold"
+        player2_column8.style.color = "green"
+        player2_column8.style.fontWeight = "bold"
 
     }
     if (gamesPlayed1 > gamesPlayed2) {
-        document.querySelector("#p1-9").style.color = "green"
-        document.querySelector("#p1-9").style.fontWeight = "bold"
+        player1_column9.style.color = "green"
+        player1_column9.style.fontWeight = "bold"
 
     }
     if (gamesPlayed2 > gamesPlayed1) {
-        document.querySelector("#p2-9").style.color = "green"
-        document.querySelector("#p2-9").style.fontWeight = "bold"
+        player2_column9.style.color = "green"
+        player2_column9.style.fontWeight = "bold"
 
     }
+
 }
 
 // let player2Stats = async () => {
