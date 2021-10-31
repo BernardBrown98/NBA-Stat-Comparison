@@ -1,0 +1,110 @@
+/* create A page where stats categories are displayed in the middle while "PLAYER 1" stats are displayed on the left and "PLAYER 2" stats are displayed on the right */
+/* player with the better stat in each category will have their stat colored green and the lesser stat will be red */
+/* Possibly if their is only one player display all of their stats in the center */
+/* If possible display three players stats compared */
+* {
+  box-sizing: border-box;
+}
+table {
+  text-align: center;
+}
+th {
+  font-size: 1.4em;
+}
+td {
+  padding-top: 0.5em;
+}
+
+#middle-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 5em;
+  padding-right: 5em;
+
+}
+
+#main-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  border: 5px solid black;
+  justify-content: center;
+  text-align: center;
+}
+
+/* .main-content{
+    border: 3px solid red;
+} */
+
+table {
+  border: 1px solid red;
+}
+
+tr {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#form-container::after {
+  content: "";
+  width: 100%;
+}
+
+#searchForm1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 0.5em;
+}
+#searchForm2 {
+  flex-direction: column;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 0.5em;
+}
+
+#searchform2 ul{
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+  order: 1;
+}
+
+.main-content{
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #player1-container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+} */
+#season{
+  text-align: center;
+  white-space: normal;
+}
+
+ul{
+  padding: 0;
+}
+
+.season-display{
+  display: none;
+}
