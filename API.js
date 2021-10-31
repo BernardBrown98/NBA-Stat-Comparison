@@ -1,5 +1,4 @@
 // INPUT BOXES
-let selections = document.querySelectorAll(".selection")
 let search1 = document.getElementById("search1")
 let search2 = document.getElementById("search2")
 // dropdown list below input
@@ -31,17 +30,10 @@ let searchedText = async userSearch => {
         return n.toLowerCase().includes(userSearch)
     })
 
-    search1.addEventListener("change", () => {
-        // dropDown2.innerHTML = ""
-        dropDown1.innerHTML = ""
-    })
-    search2.addEventListener("change", () => {
-        dropDown2.innerHTML = ""
-        // dropDown1.innerHTML = ""
-    })
-
     console.log(matches)
+    // Initialize str
     let str = ""
+    // If there are less than 15 matches (OF NBA PLAYERS) from users input add options including each match to str to be displayed
     if (matches.length < 15) {
         for (let i = 0; i < matches.length; i++) {
             str += `<option>${matches[i]}</option>`
@@ -49,10 +41,19 @@ let searchedText = async userSearch => {
     }
     dropDown1.innerHTML = str
     dropDown2.innerHTML = str
+
+    //If statements prevents dropdown list from being present after a option is selected 
+    if (`<option>${search1.value}</option>` == str) {
+        dropDown1.innerHTML = ""
+        dropDown2.innerHTML = ""
+    }
+    if (`<option>${search2.value}</option>` == str) {
+        dropDown2.innerHTML = ""
+        dropDown1.innerHTML = ""
+    }
     // END OF FILTER METHOD
 }
 
-// search1.addEventListener("keyup", () => searchedText(search1.value))
 search1.addEventListener("keyup", () => searchedText(search1.value.toLowerCase()))
 search2.addEventListener("keyup", () => searchedText(search2.value.toLowerCase()))
 
@@ -175,6 +176,19 @@ let playerStats = async () => {
     document.querySelector("#p2-7").innerHTML = (ftPercent2 * 100).toFixed(1) + "%"
     document.querySelector("#p2-8").innerHTML = minutes2
     document.querySelector("#p2-9").innerHTML = gamesPlayed2
+
+    let statsArr = [
+        points1, points2,
+        steals1, steals2,
+        minutes1, minutes2,
+        gamesPlayed1, gamesPlayed2,
+        ftPercent1, ftPercent2,
+        fgPercent1, fgPercent2,
+        rebound1, rebound2,
+        block1, block2,
+        assist1, assist2
+    ]
+
 
 
     //  Make better stats bold and green

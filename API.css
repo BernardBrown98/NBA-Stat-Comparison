@@ -2,6 +2,7 @@
 /* player with the better stat in each category will have their stat colored green and the lesser stat will be red */
 /* Possibly if their is only one player display all of their stats in the center */
 /* If possible display three players stats compared */
+/* If Possible change main section of program to include tables instead of three seperate divs */
 * {
   box-sizing: border-box;
 }
