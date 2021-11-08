@@ -1,3 +1,10 @@
+// *************TODO LIST************************
+// finish comments
+// look for new json files with player
+// possibly update year queries based on player input
+// add styles
+// add a try catch to async function to catch error when player is searched for a year he didnt play
+
 // INPUT BOXES
 let search1 = document.getElementById("search1")
 let search2 = document.getElementById("search2")
@@ -8,16 +15,14 @@ let dropDown2 = document.querySelector("#dropDown2")
 
 let searchedText = async userSearch => {
     // store data in variable
-    const res = await axios.get("names.json")
+    const res = await axios.get("data3.json")
     // create empty array for future "push"
     let nameCollection = []
     // loop over json file to store data in nameCollection
     for (let i = 0; i < res.data.length; i++) {
-        let fName = res.data[i].firstName
-        let lName = res.data[i].lastName
-        nameCollection.push(`${fName} ${lName}`)
+        let fullName = res.data[i].name
+        nameCollection.push(fullName)
         // console.log(nameCollection)
-
     }
 
     // Use FILTER method to create new array with elements that pass the test implemented  by the provided function
@@ -39,6 +44,7 @@ let searchedText = async userSearch => {
             str += `<option>${matches[i]}</option>`
         }
     }
+    // append str contents to dropdown menus
     dropDown1.innerHTML = str
     dropDown2.innerHTML = str
 
@@ -54,7 +60,7 @@ let searchedText = async userSearch => {
     // END OF FILTER METHOD
 }
 
-
+// Eventlisteners for 
 search1.addEventListener("keyup", () => searchedText(search1.value.toLowerCase()))
 search2.addEventListener("keyup", () => searchedText(search2.value.toLowerCase()))
 
@@ -301,38 +307,3 @@ let playerStats = async () => {
     }
 
 }
-
-// let player2Stats = async () => {
-//     console.log("SUBMITTED")
-//     const firstSearch2 = document.querySelector("#searchForm2 > input").value
-//     console.log(firstSearch2)
-//     const firstRes2 = await axios.get(`https://www.balldontlie.io/api/v1/players?search=${firstSearch2}`)
-//     // console.log(firstRes)
-//     let player2Id = firstRes2.data.data[0].id
-//     const secondRes2 = await axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=${player2Id}`)
-//     console.log(secondRes2.data.data[0])
-//     let assist2 = secondRes2.data.data[0].ast
-//     let block2 = secondRes2.data.data[0].blk
-//     let rebound2 = secondRes2.data.data[0].reb
-//     let fgPercent2 = secondRes2.data.data[0].fg_pct
-//     let ftPercent2 = secondRes2.data.data[0].ft_pct
-//     let gamesPlayed2 = secondRes2.data.data[0].games_played
-//     let minutes2 = secondRes2.data.data[0].min
-//     let steals2 = secondRes2.data.data[0].stl
-//     let points2 = secondRes2.data.data[0].pts
-//     console.log(assist2)
-//     // change innerHTML
-//     document.querySelector("#p2-1").innerHTML = points2.toFixed(1)
-//     document.querySelector("#p2-2").innerHTML = assist2.toFixed(1)
-//     document.querySelector("#p2-3").innerHTML = block2.toFixed(1)
-//     document.querySelector("#p2-4").innerHTML = rebound2.toFixed(1)
-//     document.querySelector("#p2-5").innerHTML = steals2.toFixed(1)
-//     document.querySelector("#p2-6").innerHTML = (fgPercent2 * 100).toFixed(1) + "%"
-//     document.querySelector("#p2-7").innerHTML = (ftPercent2 * 100).toFixed(1) + "%"
-//     document.querySelector("#p2-8").innerHTML = minutes2
-//     document.querySelector("#p2-9").innerHTML = gamesPlayed2
-
-//     if (points1 > points2) {
-//         document.querySelector("#p1-1").style.color = "green"
-//     }
-// }
