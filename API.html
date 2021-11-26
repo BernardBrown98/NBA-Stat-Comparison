@@ -16,7 +16,9 @@
         <h1>Basketball API</h1>
     </header>
     <div id="form-container">
+
         <div id="searchForm1" class="searches">
+            <h3>Player1</h3>
             <input type="text" placeholder="Search" id="search1" list="dropDown1">
             <datalist id="dropDown1">
 
@@ -41,6 +43,7 @@
             </ul>
         </div>
         <div id="searchForm2" class="searches">
+            <h3>Player2</h3>
             <input type="text" placeholder="Search" id="search2" list="dropDown2">
             <datalist id="dropDown2">
 
@@ -61,85 +64,93 @@
                 </select>
             </ul>
         </div>
-        <button id="submit-forms">Submit</button>
-        <button id="reset-forms">reset</button>
+        <button id="submit-forms">Search</button>
     </div>
-    <div id="main-container">
-        <div id="player1-container" class="main-content">
-            <h3 class="season-display">YYYY - YYYY</h3>
-            <!-- <ul>
-                <select name="season-year" id="season">
-                    <option value="2020">2020-2021</option>
-                    <option value="2019">2019-2020</option>
-                    <option value="2018">2018-2019</option>
-                    <option value="2017">2017-2018</option>
-                    <option value="2016">2016-2017</option>
-                    <option value="2015">2015-2016</option>
-                    <option value="2014">2014-2015</option>
-                    <option value="2013">2013-2014</option>
-                    <option value="2012">2012-2013</option>
-                    <option value="2011">2011-2012</option>
-                    <option value="2010">2010-2011</option>
-                </select>
-            </ul> -->
-            <!-- <h3>YYYY</h3> -->
-            <table id="player1-table">
-                <tr>
-                    <th id="player1Name">Player1</th>
-                </tr>
-                <tr>
-                    <td id="p1-1">0</td>
-                    <td id="p1-2">0</td>
-                    <td id="p1-3">0</td>
-                    <td id="p1-4">0</td>
-                    <td id="p1-5">0</td>
-                    <td id="p1-6">0</td>
-                    <td id="p1-7">0</td>
-                    <td id="p1-8">0</td>
-                    <td id="p1-9">0</td>
-                </tr>
-            </table>
-        </div>
-        <div id="middle-container" class="main-content">
+    <div id="flexbox">
+        <div id="main-container">
+            <div class="player1-image-container">
+                <img id="player1-image" class="hidden" src="" alt="">
+            </div>
+            <div id="player1-container" class="main-content">
+                <h3 class="season-display">YYYY - YYYY</h3>
+                <!-- <ul>
+                    <select name="season-year" id="season">
+                        <option value="2020">2020-2021</option>
+                        <option value="2019">2019-2020</option>
+                        <option value="2018">2018-2019</option>
+                        <option value="2017">2017-2018</option>
+                        <option value="2016">2016-2017</option>
+                        <option value="2015">2015-2016</option>
+                        <option value="2014">2014-2015</option>
+                        <option value="2013">2013-2014</option>
+                        <option value="2012">2012-2013</option>
+                        <option value="2011">2011-2012</option>
+                        <option value="2010">2010-2011</option>
+                    </select>
+                </ul> -->
+                <!-- <h3>YYYY</h3> -->
+                <table id="player1-table">
+                    <tr>
+                        <th id="player1Name">Player1</th>
+                    </tr>
+                    <tr>
+                        <td id="p1-1">0</td>
+                        <td id="p1-2">0</td>
+                        <td id="p1-3">0</td>
+                        <td id="p1-4">0</td>
+                        <td id="p1-5">0</td>
+                        <td id="p1-6">0</td>
+                        <td id="p1-7">0</td>
+                        <td id="p1-8">0</td>
+                        <td id="p1-9">0</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="middle-container" class="main-content">
 
 
-            <table id="middle-table">
-                <tr>
-                    <th>Stats</th>
-                </tr>
-                <tr>
-                    <td>Points</td>
-                    <td>Assists</td>
-                    <td>Blocks</td>
-                    <td>Rebounds</td>
-                    <td>Steals</td>
-                    <td>FG%</td>
-                    <td>FT%</td>
-                    <td>Minutes</td>
-                    <td>Games Played</td>
-                </tr>
-            </table>
-        </div>
-        <div id="player2-container" class="main-content">
-            <h3 class="season-display">YYYY - YYYY</h3>
-            <table id="player2-table">
-                <tr>
-                    <th id="player2Name">Player2</th>
-                </tr>
-                <tr>
-                    <td id="p2-1">0</td>
-                    <td id="p2-2">0</td>
-                    <td id="p2-3">0</td>
-                    <td id="p2-4">0</td>
-                    <td id="p2-5">0</td>
-                    <td id="p2-6">0</td>
-                    <td id="p2-7">0</td>
-                    <td id="p2-8">0</td>
-                    <td id="p2-9">0</td>
-                </tr>
-            </table>
+                <table id="middle-table">
+                    <tr>
+                        <th>Stats</th>
+                    </tr>
+                    <tr>
+                        <td>Points</td>
+                        <td>Assists</td>
+                        <td>Blocks</td>
+                        <td>Rebounds</td>
+                        <td>Steals</td>
+                        <td>FG%</td>
+                        <td>FT%</td>
+                        <td>Minutes</td>
+                        <td>Games Played</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="player2-container" class="main-content">
+                <h3 class="season-display">YYYY - YYYY</h3>
+                <table id="player2-table">
+                    <tr>
+                        <th id="player2Name">Player2</th>
+                    </tr>
+                    <tr>
+                        <td id="p2-1">0</td>
+                        <td id="p2-2">0</td>
+                        <td id="p2-3">0</td>
+                        <td id="p2-4">0</td>
+                        <td id="p2-5">0</td>
+                        <td id="p2-6">0</td>
+                        <td id="p2-7">0</td>
+                        <td id="p2-8">0</td>
+                        <td id="p2-9">0</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="player2-image-container">
+                <img id="player2-image" class="hidden" src="" alt="">
+            </div>
         </div>
     </div>
+
     <script src="API.js"></script>
 
 </body>

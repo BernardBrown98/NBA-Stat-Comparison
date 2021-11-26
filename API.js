@@ -13,9 +13,16 @@ let matchList = document.querySelector("#match-list")
 let dropDown1 = document.querySelector("#dropDown1")
 let dropDown2 = document.querySelector("#dropDown2")
 
+let container1 = document.querySelector("#player1-container")
+let submission = document.querySelector("#submit-forms")
+const form1 = document.querySelector("#searchForm1")
+const form2 = document.querySelector("#searchForm2")
+const input2 = document.querySelector("#searchForm2 > input").value
+
 let searchedText = async userSearch => {
     // store data in variable
     const res = await axios.get("data3.json")
+    console.log(res)
     // create empty array for future "push"
     let nameCollection = []
     // loop over json file to store data in nameCollection
@@ -24,6 +31,7 @@ let searchedText = async userSearch => {
         nameCollection.push(fullName)
         // console.log(nameCollection)
     }
+
 
     // Use FILTER method to create new array with elements that pass the test implemented  by the provided function
     let matches = nameCollection.filter(n => {
@@ -35,7 +43,10 @@ let searchedText = async userSearch => {
         return n.toLowerCase().includes(userSearch)
     })
 
-    console.log(matches)
+
+    console.log(`THIS IS THE MATCHES ${matches}`)
+
+
     // Initialize str
     let str = ""
     // If there are less than 15 matches (OF NBA PLAYERS) from users input add options including each match to str to be displayed
@@ -58,13 +69,56 @@ let searchedText = async userSearch => {
         dropDown1.innerHTML = ""
     }
     // END OF FILTER METHOD
+    // submission.addEventListener('click', () => setImage(player1Box))
+
+
+
+    let player1Box = document.querySelector("#player1-image")
+    let player2Box = document.querySelector("#player2-image")
+    let setImage = (playerBox) => {
+        let selectedObject = res.data.find(el => el.name == matches)
+
+        // USE OPTIONAL CHAINING OPERATOR TO AVOID ERROR
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+
+
+
+        let idkworkplease = selectedObject?.imgUrl
+
+        console.log(playerBox.src)
+        playerBox.src = idkworkplease
+
+
+    }
+    if (matches != '' && search1?.value.toUpperCase() == matches.toString().toUpperCase()) {
+        submission.addEventListener('click', () => setImage(player1Box))
+    }
+    if (matches != '' && search2?.value.toUpperCase() == matches.toString().toUpperCase()) {
+        submission.addEventListener('click', () => setImage(player2Box))
+
+    }
+
+    // PLAYER 1 TABLE HEADER
+
+
+
+    submission.addEventListener('click', () => {
+        player1Box.setAttribute("class", "shown")
+        player2Box.setAttribute("class", "shown")
+    })
+
+    console.log(player1Box.src)
+
+
+
+
 }
 
 // Eventlisteners for 
 search1.addEventListener("keyup", () => searchedText(search1.value.toLowerCase()))
 search2.addEventListener("keyup", () => searchedText(search2.value.toLowerCase()))
 
-let nameCollection = []
+// let nameCollection = []
 // for (let i = 0; i < res.data.length; i++) {
 //     let fName = res.data[i].firstName
 //     let lName = res.data[i].lastName
@@ -73,11 +127,7 @@ let nameCollection = []
 searchedText()
 
 
-let container1 = document.querySelector("#player1-container")
-let submission = document.querySelector("#submit-forms")
-const form1 = document.querySelector("#searchForm1")
-const form2 = document.querySelector("#searchForm2")
-const input2 = document.querySelector("#searchForm2 > input").value
+
 
 submission.addEventListener("click", () => {
     if (document.querySelector("#searchForm1 > input").value != ""
@@ -85,6 +135,7 @@ submission.addEventListener("click", () => {
         document.querySelector("#searchForm2 > input").value != ""
     ) {
         playerStats()
+
     }
 
 })
@@ -94,7 +145,7 @@ submission.addEventListener("click", () => {
 let playerStats = async () => {
     console.log("SUBMITTED")
     const firstSearch = document.querySelector("#searchForm1 > input").value
-    console.log(firstSearch)
+    console.log(`this is ${firstSearch}`)
     const firstRes = await axios.get(`https://www.balldontlie.io/api/v1/players?search=${firstSearch}`)
 
     console.log(firstRes)

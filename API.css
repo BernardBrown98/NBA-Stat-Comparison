@@ -10,28 +10,41 @@ table {
   text-align: center;
 }
 th {
-  font-size: 1.4em;
+  font-size: 1.6em;
 }
 td {
-  padding-top: 0.5em;
+  font-size: x-large;
+  padding-top: .5em;
 }
 
 #middle-container {
   display: flex;
   justify-content: flex-end;
-  padding-left: 5em;
-  padding-right: 5em;
+  /* padding-left: 5em; */
+  /* padding-right: 5em; */
 
 }
 
-#main-container {
+#flexbox{
+  display: flex;
   width: 100%;
+  justify-content: center;
+}
+
+#main-container {
+  width: auto;
   height: auto;
   display: flex;
   flex-direction: row;
   border: 5px solid black;
+  border-radius: 30px;
   justify-content: center;
+  align-content: center;
   text-align: center;
+  margin: 15px 15px;
+  -webkit-box-shadow: 2px 3px 8px blue;
+  -moz-box-shadow: 2px 3px 8px blue;
+  box-shadow: 2px 3px 8px rgb(59, 59, 59);
 }
 
 /* .main-content{
@@ -50,6 +63,7 @@ tr {
 #form-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 #form-container::after {
@@ -61,6 +75,7 @@ tr {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   padding-right: 0.5em;
 }
 #searchForm2 {
@@ -90,13 +105,19 @@ button {
   align-items: center;
 }
 
-/* #player1-container{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+#player1-container{
+  
+}
+
+.player1-image-container{
+  width: auto;
   justify-content: center;
-  align-items: center;
-} */
+  /* object-fit: cover; */
+}
+#player1-image{
+  /* object-fit: cover; */
+}
+
 #season{
   text-align: center;
   white-space: normal;
@@ -108,4 +129,24 @@ ul{
 
 .season-display{
   display: none;
+}
+
+td:nth-of-type(2n){
+  background-color: rgb(233, 233, 233);
+}
+
+h3{
+  align-self: center;
+}
+
+.hidden{
+  display: none;
+}
+
+.shown{
+  display: flex;
+}
+
+#middle-table > tbody > tr:nth-child(2) > td:nth-child(9){
+  white-space: nowrap;
 }
