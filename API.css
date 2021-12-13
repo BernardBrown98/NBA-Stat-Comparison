@@ -25,7 +25,7 @@ td {
 
 }
 
-#flexbox{
+#outer-container{
   display: flex;
   width: 100%;
   justify-content: center;
@@ -70,22 +70,22 @@ tr {
   content: "";
   width: 100%;
 }
-
-#searchForm1 {
+.searches{
   display: flex;
   flex-direction: column;
+}
+
+#search-form1 {
   align-items: flex-start;
   justify-content: center;
   padding-right: 0.5em;
 }
-#searchForm2 {
-  flex-direction: column;
-  display: flex;
+#search-form2 {
   align-items: flex-end;
   padding-left: 0.5em;
 }
 
-#searchform2 ul{
+#search-form2 ul{
   display: flex;
   justify-content: flex-end;
 }
@@ -105,17 +105,9 @@ button {
   align-items: center;
 }
 
-#player1-container{
-  
-}
-
-.player1-image-container{
+.player-image-container{
   width: auto;
   justify-content: center;
-  /* object-fit: cover; */
-}
-#player1-image{
-  /* object-fit: cover; */
 }
 
 #season{

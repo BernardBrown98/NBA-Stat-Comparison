@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="API.css">
     <title>API</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="API.css">
 </head>
 
@@ -16,16 +15,13 @@
         <h1>Basketball API</h1>
     </header>
     <div id="form-container">
-
-        <div id="searchForm1" class="searches">
+        <!-- Search boxes for user to input players they want to search -->
+        <div id="search-form1" class="searches">
             <h3>Player1</h3>
-            <input type="text" placeholder="Search" id="search1" list="dropDown1">
-            <datalist id="dropDown1">
+            <input type="text" placeholder="Search" id="search1" list="drop-down1">
+            <!-- Data lists will be filled in javascript based off of matches-->
+            <datalist id="drop-down1"></datalist>
 
-            </datalist>
-            <div id="match-list">
-
-            </div>
             <ul>
                 <select name="season-year" id="season1">
                     <option value="2020">2020-2021</option>
@@ -42,12 +38,11 @@
                 </select>
             </ul>
         </div>
-        <div id="searchForm2" class="searches">
+        <div id="search-form2" class="searches">
             <h3>Player2</h3>
-            <input type="text" placeholder="Search" id="search2" list="dropDown2">
-            <datalist id="dropDown2">
+            <input type="text" placeholder="Search" id="search2" list="drop-down2">
+            <datalist id="drop-down2"></datalist>
 
-            </datalist>
             <ul>
                 <select name="season-year" id="season2">
                     <option value="2020">2020-2021</option>
@@ -64,34 +59,20 @@
                 </select>
             </ul>
         </div>
+        <!-- Submits form for data to be processed -->
         <button id="submit-forms">Search</button>
     </div>
-    <div id="flexbox">
+    <div id="outer-container">
         <div id="main-container">
-            <div class="player1-image-container">
+            <div class="player-image-container">
+                <!-- Image src will be assigned once form is submitted -->
                 <img id="player1-image" class="hidden" src="" alt="">
             </div>
             <div id="player1-container" class="main-content">
                 <h3 class="season-display">YYYY - YYYY</h3>
-                <!-- <ul>
-                    <select name="season-year" id="season">
-                        <option value="2020">2020-2021</option>
-                        <option value="2019">2019-2020</option>
-                        <option value="2018">2018-2019</option>
-                        <option value="2017">2017-2018</option>
-                        <option value="2016">2016-2017</option>
-                        <option value="2015">2015-2016</option>
-                        <option value="2014">2014-2015</option>
-                        <option value="2013">2013-2014</option>
-                        <option value="2012">2012-2013</option>
-                        <option value="2011">2011-2012</option>
-                        <option value="2010">2010-2011</option>
-                    </select>
-                </ul> -->
-                <!-- <h3>YYYY</h3> -->
                 <table id="player1-table">
                     <tr>
-                        <th id="player1Name">Player1</th>
+                        <th id="player1-name">Player1</th>
                     </tr>
                     <tr>
                         <td id="p1-1">0</td>
@@ -130,7 +111,7 @@
                 <h3 class="season-display">YYYY - YYYY</h3>
                 <table id="player2-table">
                     <tr>
-                        <th id="player2Name">Player2</th>
+                        <th id="player2-name">Player2</th>
                     </tr>
                     <tr>
                         <td id="p2-1">0</td>
@@ -145,12 +126,12 @@
                     </tr>
                 </table>
             </div>
-            <div class="player2-image-container">
+            <div class="player-image-container">
                 <img id="player2-image" class="hidden" src="" alt="">
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="API.js"></script>
 
 </body>

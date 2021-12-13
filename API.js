@@ -9,15 +9,14 @@
 let search1 = document.getElementById("search1")
 let search2 = document.getElementById("search2")
 // dropdown list below input
-let matchList = document.querySelector("#match-list")
-let dropDown1 = document.querySelector("#dropDown1")
-let dropDown2 = document.querySelector("#dropDown2")
+let dropDown1 = document.querySelector("#drop-down1")
+let dropDown2 = document.querySelector("#drop-down2")
 
 let container1 = document.querySelector("#player1-container")
 let submission = document.querySelector("#submit-forms")
-const form1 = document.querySelector("#searchForm1")
-const form2 = document.querySelector("#searchForm2")
-const input2 = document.querySelector("#searchForm2 > input").value
+const form1 = document.querySelector("#search-form1")
+const form2 = document.querySelector("#search-form2")
+const input2 = document.querySelector("#search-form2 > input").value
 
 let searchedText = async userSearch => {
     // store data in variable
@@ -81,14 +80,9 @@ let searchedText = async userSearch => {
         // USE OPTIONAL CHAINING OPERATOR TO AVOID ERROR
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
 
-
-
         let idkworkplease = selectedObject?.imgUrl
-
         console.log(playerBox.src)
         playerBox.src = idkworkplease
-
-
     }
     if (matches != '' && search1?.value.toUpperCase() == matches.toString().toUpperCase()) {
         submission.addEventListener('click', () => setImage(player1Box))
@@ -130,9 +124,9 @@ searchedText()
 
 
 submission.addEventListener("click", () => {
-    if (document.querySelector("#searchForm1 > input").value != ""
+    if (document.querySelector("#search-form1 > input").value != ""
         &&
-        document.querySelector("#searchForm2 > input").value != ""
+        document.querySelector("#search-form2 > input").value != ""
     ) {
         playerStats()
 
@@ -144,7 +138,7 @@ submission.addEventListener("click", () => {
 
 let playerStats = async () => {
     console.log("SUBMITTED")
-    const firstSearch = document.querySelector("#searchForm1 > input").value
+    const firstSearch = document.querySelector("#search-form1 > input").value
     console.log(`this is ${firstSearch}`)
     const firstRes = await axios.get(`https://www.balldontlie.io/api/v1/players?search=${firstSearch}`)
 
@@ -172,7 +166,7 @@ let playerStats = async () => {
     console.log(assist1)
     // change innerHTML
     document.querySelector("#player1-container > h3").innerHTML = season1Display
-    document.querySelector("#player1Name").innerHTML = fullName1
+    document.querySelector("#player1-name").innerHTML = fullName1
     document.querySelector("#p1-1").innerHTML = points1.toFixed(1)
     document.querySelector("#p1-2").innerHTML = assist1.toFixed(1)
     document.querySelector("#p1-3").innerHTML = block1.toFixed(1)
@@ -190,7 +184,7 @@ let playerStats = async () => {
 
     // SECOND SET OF REQUESTS
 
-    const firstSearch2 = document.querySelector("#searchForm2 > input").value
+    const firstSearch2 = document.querySelector("#search-form2 > input").value
     // console.log(firstSearch2)
     const firstRes2 = await axios.get(`https://www.balldontlie.io/api/v1/players?search=${firstSearch2}`)
     // console.log(firstRes2)
@@ -216,7 +210,7 @@ let playerStats = async () => {
     console.log(assist2)
     // change innerHTML
     document.querySelector("#player2-container > h3").innerHTML = season2Display
-    document.querySelector("#player2Name").innerHTML = fullName2
+    document.querySelector("#player2-name").innerHTML = fullName2
     document.querySelector("#p2-1").innerHTML = points2.toFixed(1)
     document.querySelector("#p2-2").innerHTML = assist2.toFixed(1)
     document.querySelector("#p2-3").innerHTML = block2.toFixed(1)
