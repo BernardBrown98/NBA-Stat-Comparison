@@ -6,34 +6,34 @@
 // add a try catch to async function to catch error when player is searched for a year he didnt play
 
 // INPUT BOXES
-let search1 = document.getElementById("search1")
-let search2 = document.getElementById("search2")
+const search1 = document.getElementById("search1")
+const search2 = document.getElementById("search2")
 // dropdown list below input
-let dropDown1 = document.querySelector("#drop-down1")
-let dropDown2 = document.querySelector("#drop-down2")
+const dropDown1 = document.querySelector("#drop-down1")
+const dropDown2 = document.querySelector("#drop-down2")
 
-let container1 = document.querySelector("#player1-container")
-let submission = document.querySelector("#submit-forms")
+const container1 = document.querySelector("#player1-container")
+const submission = document.querySelector("#submit-forms")
 const form1 = document.querySelector("#search-form1")
 const form2 = document.querySelector("#search-form2")
 const input2 = document.querySelector("#search-form2 > input").value
 
-let searchedText = async userSearch => {
+const searchedText = async userSearch => {
     // store data in variable
     const res = await axios.get("data3.json")
     console.log(res)
     // create empty array for future "push"
-    let nameCollection = []
-    // loop over json file to store data in nameCollection
+    let nameArray = []
+    // loop over json file to store data in nameArray
     for (let i = 0; i < res.data.length; i++) {
         let fullName = res.data[i].name
-        nameCollection.push(fullName)
-        // console.log(nameCollection)
+        nameArray.push(fullName)
+        // console.log(nameArray)
     }
 
 
     // Use FILTER method to create new array with elements that pass the test implemented  by the provided function
-    let matches = nameCollection.filter(n => {
+    const playerMatches = nameArray.filter(n => {
         // REGEX METHOD BELOW 
         // const regex = new RegExp(`${userSearch}`, "gi")
         // return n.match(regex)
@@ -43,15 +43,15 @@ let searchedText = async userSearch => {
     })
 
 
-    console.log(`THIS IS THE MATCHES ${matches}`)
+    console.log(`THIS IS THE playerMatches ${playerMatches}`)
 
 
     // Initialize str
     let str = ""
     // If there are less than 15 matches (OF NBA PLAYERS) from users input add options including each match to str to be displayed
-    if (matches.length < 15) {
-        for (let i = 0; i < matches.length; i++) {
-            str += `<option>${matches[i]}</option>`
+    if (playerMatches.length < 15) {
+        for (let i = 0; i < playerMatches.length; i++) {
+            str += `<option>${playerMatches[i]}</option>`
         }
     }
     // append str contents to dropdown menus
@@ -72,33 +72,33 @@ let searchedText = async userSearch => {
 
 
 
-    let player1Box = document.querySelector("#player1-image")
-    let player2Box = document.querySelector("#player2-image")
-    let setImage = (playerBox) => {
-        let selectedObject = res.data.find(el => el.name == matches)
+    const player1Box = document.querySelector("#player1-image")
+    const player2Box = document.querySelector("#player2-image")
+    const outerContainer = document.querySelector("#outer-container")
+    const setImage = (playerBox) => {
+        const selectedObject = res.data.find(el => el.name == playerMatches)
 
         // USE OPTIONAL CHAINING OPERATOR TO AVOID ERROR
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
 
-        let idkworkplease = selectedObject?.imgUrl
+        const idkworkplease = selectedObject?.imgUrl
         console.log(playerBox.src)
         playerBox.src = idkworkplease
     }
-    if (matches != '' && search1?.value.toUpperCase() == matches.toString().toUpperCase()) {
+    if (playerMatches != '' && search1?.value.toUpperCase() == playerMatches.toString().toUpperCase()) {
         submission.addEventListener('click', () => setImage(player1Box))
     }
-    if (matches != '' && search2?.value.toUpperCase() == matches.toString().toUpperCase()) {
+    if (playerMatches != '' && search2?.value.toUpperCase() == playerMatches.toString().toUpperCase()) {
         submission.addEventListener('click', () => setImage(player2Box))
 
     }
 
-    // PLAYER 1 TABLE HEADER
-
-
-
+    // Shows player information once form is submitted 
     submission.addEventListener('click', () => {
         player1Box.setAttribute("class", "shown")
         player2Box.setAttribute("class", "shown")
+        // Allows div to grow to fit content
+        outerContainer.setAttribute("class", "grow")
     })
 
     console.log(player1Box.src)
@@ -112,13 +112,13 @@ let searchedText = async userSearch => {
 search1.addEventListener("keyup", () => searchedText(search1.value.toLowerCase()))
 search2.addEventListener("keyup", () => searchedText(search2.value.toLowerCase()))
 
-// let nameCollection = []
+// let nameArray = []
 // for (let i = 0; i < res.data.length; i++) {
 //     let fName = res.data[i].firstName
 //     let lName = res.data[i].lastName
-//     nameCollection.push(`${fName} ${lName}`)
+//     nameArray.push(`${fName} ${lName}`)
 // }
-searchedText()
+// searchedText()
 
 
 
@@ -128,41 +128,41 @@ submission.addEventListener("click", () => {
         &&
         document.querySelector("#search-form2 > input").value != ""
     ) {
-        playerStats()
-
+        showPlayerStats()
     }
 
 })
 
 
 
-let playerStats = async () => {
+const showPlayerStats = async () => {
     console.log("SUBMITTED")
     const firstSearch = document.querySelector("#search-form1 > input").value
     console.log(`this is ${firstSearch}`)
-    const firstRes = await axios.get(`https://www.balldontlie.io/api/v1/players?search=${firstSearch}`)
+    const apiBaseRoute = "https://www.balldontlie.io/api/v1"
+    const firstRes = await axios.get(`${apiBaseRoute}/players?search=${firstSearch}`)
 
     console.log(firstRes)
-    let seasonSelect1 = document.querySelector("#season1")
-    let selectValue1 = seasonSelect1.value
+    const seasonSelect1 = document.querySelector("#season1")
+    const selectValue1 = seasonSelect1.value
     // console.log(selectValue1)
-    let fName1 = firstRes.data.data[0].first_name
-    let lName1 = firstRes.data.data[0].last_name
-    let fullName1 = `${fName1} ${lName1}`
-    let player1Id = firstRes.data.data[0].id
-    const secondRes = await axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${selectValue1}&player_ids[]=${player1Id}`)
+    const fName1 = firstRes.data.data[0].first_name
+    const lName1 = firstRes.data.data[0].last_name
+    const fullName1 = `${fName1} ${lName1}`
+    const player1Id = firstRes.data.data[0].id
+    const secondRes = await axios.get(`${apiBaseRoute}/season_averages?season=${selectValue1}&player_ids[]=${player1Id}`)
     // console.log(secondRes.data.data[0])
-    let season1Display = `${selectValue1} - ${parseInt(selectValue1) + 1}`
+    const season1Display = `${selectValue1} - ${parseInt(selectValue1) + 1}`
     // console.log(season1Display)
-    let assist1 = secondRes.data.data[0].ast
-    let block1 = secondRes.data.data[0].blk
-    let rebound1 = secondRes.data.data[0].reb
-    let fgPercent1 = secondRes.data.data[0].fg_pct
-    let ftPercent1 = secondRes.data.data[0].ft_pct
-    let gamesPlayed1 = secondRes.data.data[0].games_played
-    let minutes1 = secondRes.data.data[0].min
-    let steals1 = secondRes.data.data[0].stl
-    let points1 = secondRes.data.data[0].pts
+    const assist1 = secondRes.data.data[0].ast
+    const block1 = secondRes.data.data[0].blk
+    const rebound1 = secondRes.data.data[0].reb
+    const fgPercent1 = secondRes.data.data[0].fg_pct
+    const ftPercent1 = secondRes.data.data[0].ft_pct
+    const gamesPlayed1 = secondRes.data.data[0].games_played
+    const minutes1 = secondRes.data.data[0].min
+    const steals1 = secondRes.data.data[0].stl
+    const points1 = secondRes.data.data[0].pts
     console.log(assist1)
     // change innerHTML
     document.querySelector("#player1-container > h3").innerHTML = season1Display
@@ -186,27 +186,27 @@ let playerStats = async () => {
 
     const firstSearch2 = document.querySelector("#search-form2 > input").value
     // console.log(firstSearch2)
-    const firstRes2 = await axios.get(`https://www.balldontlie.io/api/v1/players?search=${firstSearch2}`)
+    const firstRes2 = await axios.get(`${apiBaseRoute}/players?search=${firstSearch2}`)
     // console.log(firstRes2)
-    let seasonSelect2 = document.querySelector("#season2")
-    let selectValue2 = seasonSelect2.value
-    let fName2 = firstRes2.data.data[0].first_name
-    let lName2 = firstRes2.data.data[0].last_name
-    let fullName2 = `${fName2} ${lName2}`
+    const seasonSelect2 = document.querySelector("#season2")
+    const selectValue2 = seasonSelect2.value
+    const fName2 = firstRes2.data.data[0].first_name
+    const lName2 = firstRes2.data.data[0].last_name
+    const fullName2 = `${fName2} ${lName2}`
     // let player1Id = firstRes.data.data[0].id
-    let player2Id = firstRes2.data.data[0].id
-    const secondRes2 = await axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${selectValue2}&player_ids[]=${player2Id}`)
+    const player2Id = firstRes2.data.data[0].id
+    const secondRes2 = await axios.get(`${apiBaseRoute}/season_averages?season=${selectValue2}&player_ids[]=${player2Id}`)
     // console.log(secondRes2.data.data[0])
-    let season2Display = `${selectValue2} - ${parseInt(selectValue2) + 1}`
-    let assist2 = secondRes2.data.data[0].ast
-    let block2 = secondRes2.data.data[0].blk
-    let rebound2 = secondRes2.data.data[0].reb
-    let fgPercent2 = secondRes2.data.data[0].fg_pct
-    let ftPercent2 = secondRes2.data.data[0].ft_pct
-    let gamesPlayed2 = secondRes2.data.data[0].games_played
-    let minutes2 = secondRes2.data.data[0].min
-    let steals2 = secondRes2.data.data[0].stl
-    let points2 = secondRes2.data.data[0].pts
+    const season2Display = `${selectValue2} - ${parseInt(selectValue2) + 1}`
+    const assist2 = secondRes2.data.data[0].ast
+    const block2 = secondRes2.data.data[0].blk
+    const rebound2 = secondRes2.data.data[0].reb
+    const fgPercent2 = secondRes2.data.data[0].fg_pct
+    const ftPercent2 = secondRes2.data.data[0].ft_pct
+    const gamesPlayed2 = secondRes2.data.data[0].games_played
+    const minutes2 = secondRes2.data.data[0].min
+    const steals2 = secondRes2.data.data[0].stl
+    const points2 = secondRes2.data.data[0].pts
     console.log(assist2)
     // change innerHTML
     document.querySelector("#player2-container > h3").innerHTML = season2Display
@@ -244,7 +244,7 @@ let playerStats = async () => {
     let player2_column9 = document.querySelector("#p2-9")
 
     // Add both players column variables to an array
-    let columnArray = [
+    const columnArray = [
         player1_column1, player1_column2, player1_column3, player1_column4,
         player1_column5, player1_column6, player1_column7, player1_column8, player1_column9,
         player2_column1, player2_column2, player2_column3, player2_column4,
@@ -330,12 +330,16 @@ let playerStats = async () => {
         player2_column7.style.fontWeight = "bold"
 
     }
-    if (minutes1 > minutes2) {
+
+    // function to convert string into int after sripping colon from string.
+    // replace method gets rid of ":" and allows for proper comparsion of time
+    let deleteColon = minutes => parseInt(minutes.replace(":", ""))
+    if (deleteColon(minutes1) > deleteColon(minutes2)) {
         player1_column8.style.color = "green"
         player1_column8.style.fontWeight = "bold"
 
     }
-    if (minutes2 > minutes1) {
+    if (deleteColon(minutes2) > deleteColon(minutes1)) {
         player2_column8.style.color = "green"
         player2_column8.style.fontWeight = "bold"
 
