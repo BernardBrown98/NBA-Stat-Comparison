@@ -17,8 +17,16 @@ const submission = document.querySelector("#submit-forms")
 const reset = document.querySelector("#reset-forms")
 const form1 = document.querySelector("#search-form1")
 const form2 = document.querySelector("#search-form2")
+const inputVals = document.querySelectorAll("input")
 const input2 = document.querySelector("#search-form2 > input").value
-let images = document.querySelectorAll("img")
+const images = document.querySelectorAll("img")
+// Initialize variable for class on
+const playerColumns = document.querySelectorAll(".player-stat")
+
+// Initialize variable for class 
+const outerContainer = document.querySelector("#outer-container")
+
+
 // Initialize Player1 Column variables
 let player1_column1 = document.querySelector("#p1-1")
 let player1_column2 = document.querySelector("#p1-2")
@@ -51,10 +59,10 @@ const columnArray = [
 
 // Create function to reset highlights (BOLD AND GREEN COLORING) from tables after resubmission
 function resetHightlights() {
-    for (let i = 0; i < columnArray.length; i++) {
-        columnArray[i].style.color = "black"
-        columnArray[i].style.fontWeight = "normal"
-    }
+    playerColumns.forEach(column => {
+        column.style.color = "black"
+        column.style.fontWeight = "normal"
+    })
 }
 
 const searchedText = async userSearch => {
@@ -113,7 +121,6 @@ const searchedText = async userSearch => {
 
     const player1Box = document.querySelector("#player1-image")
     const player2Box = document.querySelector("#player2-image")
-    const outerContainer = document.querySelector("#outer-container")
     const setImage = (playerBox) => {
         const selectedObject = res.data.find(el => el.name == playerMatches)
 
@@ -165,30 +172,17 @@ submission.addEventListener("click", () => {
 
 })
 
+// Create function that resets all players stats (includes calling resetHighlights to reset colors)
 let resetDisplay = () => {
+    inputVals.forEach(input => input.value = "")
+    reset.setAttribute("class", "hidden")
+    outerContainer.removeAttribute("class", "grow")
     images.forEach(img => img.src = "")
     document.querySelector("#player1-container > h3").innerHTML = ""
     document.querySelector("#player1-name").innerHTML = "Player 1"
-    document.querySelector("#p1-1").innerHTML = "0"
-    document.querySelector("#p1-2").innerHTML = "0"
-    document.querySelector("#p1-3").innerHTML = "0"
-    document.querySelector("#p1-4").innerHTML = "0"
-    document.querySelector("#p1-5").innerHTML = "0"
-    document.querySelector("#p1-6").innerHTML = "0"
-    document.querySelector("#p1-7").innerHTML = "0"
-    document.querySelector("#p1-8").innerHTML = "0"
-    document.querySelector("#p1-9").innerHTML = "0"
+    playerColumns.forEach(column => column.innerHTML = "0")
     document.querySelector("#player2-container > h3").innerHTML = ""
     document.querySelector("#player2-name").innerHTML = "Player 2"
-    document.querySelector("#p2-1").innerHTML = "0"
-    document.querySelector("#p2-2").innerHTML = "0"
-    document.querySelector("#p2-3").innerHTML = "0"
-    document.querySelector("#p2-4").innerHTML = "0"
-    document.querySelector("#p2-5").innerHTML = "0"
-    document.querySelector("#p2-6").innerHTML = "0"
-    document.querySelector("#p2-7").innerHTML = "0"
-    document.querySelector("#p2-8").innerHTML = "0"
-    document.querySelector("#p2-9").innerHTML = "0"
     resetHightlights()
 }
 
@@ -386,6 +380,7 @@ const showPlayerStats = async () => {
 
         }
     } catch (error) {
+        console.log(error)
         alert("Please enter a current players name spelled correctly.")
     }
 }
