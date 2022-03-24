@@ -10,23 +10,25 @@
     <link rel="stylesheet" href="API.css">
 
     <title>API</title>
-    <!-- <link rel="stylesheet" href="API.css"> -->
 </head>
 
 <body>
     <header>
-        <h1>Basketball API</h1>
+        <h1>NBA Stat Comparison</h1>
     </header>
     <div id="form-container">
         <!-- Search boxes for user to input players they want to search -->
         <div id="search-form1" class="searches">
-            <h3>Player1</h3>
-            <input type="text" placeholder="Player name" id="search1" list="drop-down1">
+            <h3>Player 1</h3>
+            <input type="text" placeholder="Player name" class="form-control" id="search1" list="drop-down1">
+            <div id="player1-invalid" class="hidden">
+                Please correctly enter a name
+            </div>
             <!-- Data lists will be filled in javascript based off of matches-->
             <datalist id="drop-down1"></datalist>
 
             <ul>
-                <select name="season-year" id="season1">
+                <select class="form-select" name="season-year" id="season1">
                     <option value="2021">2021-2022</option>
                     <option value="2020">2020-2021</option>
                     <option value="2019">2019-2020</option>
@@ -43,12 +45,15 @@
             </ul>
         </div>
         <div id="search-form2" class="searches">
-            <h3>Player2</h3>
-            <input type="text" placeholder="Player name" id="search2" list="drop-down2">
+            <h3>Player 2</h3>
+            <input type="text" placeholder="Player name" class="form-control" id="search2" list="drop-down2">
+            <div id="player2-invalid" class="hidden">
+                Please correctly enter a name
+            </div>
             <datalist id="drop-down2"></datalist>
 
             <ul>
-                <select name="season-year" id="season2">
+                <select class="form-select" name="season-year" id="season2">
                     <option value="2021">2021-2022</option>
                     <option value="2020">2020-2021</option>
                     <option value="2019">2019-2020</option>
@@ -94,7 +99,6 @@
                 </table>
             </div>
             <div id="middle-container" class="main-content">
-
 
                 <table id="middle-table">
                     <tr>
@@ -143,11 +147,3 @@
 </body>
 
 </html>
-
-
-<!-- THINGS TO ADD -->
-
-<!-- Hide certain divs to allow for a single player stat comparison -->
-<!-- Once user decides to search for second player, have javascript
-detect the change and show the second div (player chart/stats)
-to allow for comparison -->

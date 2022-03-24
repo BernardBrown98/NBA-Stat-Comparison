@@ -2,8 +2,6 @@
   box-sizing: border-box;
 }
 
-
-
 body{
   display: flex;
   flex-direction: column;
@@ -11,6 +9,7 @@ body{
 }
 
 header{
+  color: rgb(51,51,51);
   text-align: center;
 }
 
@@ -20,7 +19,12 @@ table {
   border-spacing: 0;
 }
 
+.input-error{
+  border: red 2px solid !important;
+}
+
 th {
+  color: rgb(51,51,51);
   font-size: 1.6em;
 }
 
@@ -89,7 +93,7 @@ input[type=text]{
   align-items: flex-start;
   justify-content: center;
   padding-right: 0.5em;
-}
+} 
 #search-form2 {
   align-items: flex-end;
   padding-left: 0.5em;
@@ -123,11 +127,11 @@ button:hover{
 }
 
 .form-control{
-  border-color: black;
+  border-color: rgb(51,51,51);
 }
 
 .form-control:focus{
-  border-color: black;
+  border-color: rgb(51,51,51);
   box-shadow: 0;
 }
 
@@ -169,6 +173,7 @@ td:nth-of-type(2n){
 }
 
 h3{
+  color: rgb(51,51,51);
   align-self: center;
 }
 
@@ -218,12 +223,15 @@ and (min-width: 750px)
   input[type=text]{
     border: 1.5px solid black;
   }
+
   img{
     position: absolute;
-  }
+  } 
+
   #player1-image{
     top: 0;
   }
+
   #player2-image{
     top: 0;
     right: 0;
@@ -237,25 +245,31 @@ and (min-width: 520px)
   button{
     margin-top: -30px;
   }
+
   input[type=text], select{
     border: 1px solid black;
     border-radius: 5px;
   }
+
   #main-container{
     position: relative;
     align-self: flex-end;
     width: 100%;
     height: 95%;
   }
+
   .main-content{
     width: calc(100% / 3);
   }
+
   table,tbody{
     width: 100%;
   }
+
   header{
     display: none;
   }
+
   .grow{
     flex: 1;
   }
@@ -264,13 +278,16 @@ and (min-width: 520px)
     width: 100%;
     border: 1px solid black;
   }
+
   img{
     width: 35%;
     position: absolute;
   }
+
   #player1-image{
     top: 0;
   }
+
   #player2-image{
     top: 0;
     right: 0;
@@ -286,19 +303,23 @@ and (max-height: 430px)
   button{
     margin-top: -30px;
   }
+
   input[type=text], select{
     border: 1px solid black;
     border-radius: 5px;
   }
+
   #main-container{
     min-height: 100%;
     position: relative;
     align-self: flex-end;
     margin: 0;
   }
+
   .main-content{
     width: calc(100% / 3);
   }
+
   table,tbody{
     width: 100%;
   }
@@ -306,6 +327,7 @@ and (max-height: 430px)
   td{
     font-size: large;
   }
+
   header{
     display: none;
   }
@@ -332,6 +354,7 @@ and (max-height: 430px)
     top: 0;
     left: 10%;
   }
+
   #player2-image{
     position: absolute;
     top: 0;
@@ -343,8 +366,7 @@ and (max-height: 430px)
 and (max-width: 519px) {
   html,body{
     margin: 0;
-}
-
+  }
 
   .searches{
     width: 45%;
@@ -368,19 +390,23 @@ and (max-width: 519px) {
 
   .grow{
   flex: 1;
-}
+  }
+
   #outer-container {
     max-width: 100% !important;
   }
+
   #main-container{
     position: relative;
     align-items: flex-end;
     width: 100%;
     margin: 0;
   }
+
   .main-content{
     width: calc(100% / 3);
   }
+
   table,tbody{
     width: 100%;
     height: 100%;
@@ -390,9 +416,11 @@ and (max-width: 519px) {
     width: 40%;
     position: absolute;
   }
+
   #player1-image{
     top: 0;
   }
+
   #player2-image{
     top: 0;
     right: 0;
@@ -411,11 +439,6 @@ and (min-height: 913px){
 @media only screen
 and (max-width: 480px)
 and (max-height: 667px){
-
-  /* #form-container{
-    width: 100%;
-  } */
-
   h1{
     display: none;
   }
@@ -430,12 +453,12 @@ and (max-height: 667px){
 
   #search-form2{
     margin-left: auto;
-
   }
 
   th {
     font-size: 1.6em;
   }
+
   td {
     font-size: 1.3em;
     padding-top: .5em;
@@ -447,8 +470,8 @@ and (max-height: 667px){
 
   img{
     width: 40%;
-    /* visibility: hidden; */
   }
+
   .season-display,.player-names{
     display: none !important;
   }
@@ -461,12 +484,15 @@ and (max-height: 873px){
   .searches{
     width: 48%;
   }
+
   input[type=text]{
     width: 98%;
   }
+
   .season-display,.player-names{
     display: none !important;
   }
+
   img{
     width: 39%;
   }
@@ -491,13 +517,16 @@ and (max-height: 420px){
   .searches{
     width: 48%;
   }
+
   input[type=text]{
     width: 70%;
     border: 1px solid black;
   }
+
   .season-display{
     display: none !important;
   }
+
   img{
     width: 100%;
   }
@@ -535,6 +564,7 @@ and (min-height: 431px){
   img{
     display: none !important;
   }
+
   .season-display,.player-names{
     display: contents !important;
   }
@@ -548,6 +578,7 @@ and (min-height: 431px){
   img{
     display: none !important;
   }
+  
   .season-display,.player-names{
     display: contents !important;
   }
